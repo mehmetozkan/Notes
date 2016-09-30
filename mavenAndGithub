@@ -1,0 +1,135 @@
+https://maven.apache.org/download.cgi  apache-maven-3.3.9-bin.zip
+https://git-scm.com/  git core download and setup Git-2.10.0-64-bit
+
+Ortam Değişkenleri Tanıtma
+JAVA_HOME  C:\Program Files\Java\jdk1.7.0_79
+M2_HOME    C:\maven3\
+M2_REPO
+
+Path       C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files (x86)\Universal Extractor;C:\Program Files (x86)\Universal Extractor\bin;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Skype\Phone\;%JAVA_HOME%\bin;%M2_HOME%\bin;C:\Program Files\Git\cmd
+
+Ortam Değişkenlerini Test Etme 
+echo %variable%
+
+
+how to create maven project  or How to create a Java project with Maven
+-------------------------------------------------------------------------
+http://www.mkyong.com/maven/how-to-create-a-java-project-with-maven/
+
+https://maven.apache.org/guides/introduction/introduction-to-archetypes.html
+https://github.com/kolorobot/spring-mvc-quickstart-archetype
+
+mvn archetype:generate -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=pom-root -DarchetypeVersion=RELEASE -DinteractiveMode=false -DgroupId=com.mycompany.app -DartifactId=my-app     -Dversion=1.0.0-SNAPSHOT 
+mvn archetype:create -DgroupId=net.bytesource.prototype -DartifactId=spring-helloworld -DarchetypeArtifactId=maven-archetype-webapp
+
+mvn archetype:generate -DgroupId={project-packaging}
+   -DartifactId={project-name}
+   -DarchetypeArtifactId=maven-archetype-quickstart
+   -DinteractiveMode=false
+ 
+mvn archetype:generate -DgroupId=com.mehmetozkan -DartifactId=TestProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+mvn archetype:generate -DgroupId=gov.tr.mehmet -DartifactId=TestProject -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+maven-archetype-webapp or maven-archetype-quickstart
+
+Maven and Jpa tutorial
+mvn archetype:generate -DarchetypeGroupId=com.github.lalyos -DarchetypeArtifactId=standalone-jpa-eclipselink-archetype -DgroupId=com.mastertheboss -DartifactId=EclipseJPAExample -Dversion=1.0-SNAPSHOT -Dpackage=com.mastertheboss -DinteractiveMode=false
+
+mvn compile exec:java -Dexec.mainClass=com.mastertheboss.jpa.JpaTest
+
+Maven and Hibernate tutorial
+mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.mastertheboss -DartifactId=HibernateExample -Dversion=1.0.0
+
+mvn clean
+or
+mvn clean package
+
+How to tell git to use the correct identity (name and email) for a given project?
+---------------------------------------------------------------------------------
+git config --global user.email "bob@example.com"
+git config user.email "bob@example.com"
+git commit --author "Bob <bob@example.com>"
+
+test check
+git config --get user.name
+git config --get user.email
+
+local set
+
+git config user.email mahmoud@company.ccc
+git config user.name 'Mahmoud Zalt'
+local get
+
+git config --get user.email
+git config --get user.name
+The local config file is in the project directory: .git/config.
+
+global set
+
+git config --global user.email mahmoud@zalt.me
+git config --global user.name 'Mahmoud Zalt'
+global get
+
+git config --global --get user.email
+git config --global --get user.name
+
+Generating a new SSH key
+-------------------------
+Paste the text below, substituting in your GitHub email address.
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+
+Adding your SSH key to the ssh-agent
+-----------------------------------
+$ eval "$(ssh-agent -s)"
+$ eval $(ssh-agent -s)
+$ ssh-add ~/.ssh/id_rsa         C:\Users\mehmetpc\.ssh buraya ekliyor
+
+
+how to add existing project to git
+----------------------------------
+#Initialize the local directory as a Git repository.
+$ git init
+#Add the files in your new local repository. This stages them for the first commit.
+$ git add .
+#Commit the files that you've staged in your local repository.
+$ git commit -m "First commit"
+#In the Command prompt, add the URL for the remote repository where your local repository will be pushed.
+$ git remote add origin "remote repository URL githup'da ki proje yolu" 
+# Sets the new remote
+$ git remote -v 
+# Verifies the new remote URL (var mı kontrol et)
+# Push the changes in your local repository to GitHub. versiyon orada yüksek ise ilk önce pull yapıyorsun 
+$ git push origin master 
+# Pushes the changes in your local repository up to the remote repository you specified as the origin
+
+hata gelirse
+--------------
+Git refusing to merge unrelated histories
+$ git push origin master --allow-unrelated-histories
+
+eclipse ayarı
+----------------
+preferences
+SSH2 SEKMESİNDEN
+SSH2 home: C:\Users\mehmetpc\.ssh
+Private keys: id_dsa,id_rsa,id_rsa
+
+
+Clone Git Repository
+--------------------
+URI:  ssh://git@github.com/mehmetozkan/TestProject.git
+Host: github.com
+Repository path:/mehmetozkan/TestProject.git
+
+Protocol:ssh
+
+User:git
+password:şifrem
+
+sudo apt-get autoremove gnome-keyring
+
+mehmet@mehmet:/tmp$ git clone git@github.com:mehmetozkan/OpenStackApi.git
