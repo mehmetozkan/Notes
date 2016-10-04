@@ -133,3 +133,16 @@ password:şifrem
 sudo apt-get autoremove gnome-keyring
 
 mehmet@mehmet:/tmp$ git clone git@github.com:mehmetozkan/OpenStackApi.git
+
+
+sudo su
+history | grep rdesktop
+gedit ~/.bash_history
+
+apt-get autoremove gnome-keyring
+sudo apt-get autoremove gnome-keyring
+
+vim /etc/hosts
+sudo vim /etc/hosts
+sudo /etc/init.d/network restart
+sudo /etc/init.d/networking restart
