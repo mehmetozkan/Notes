@@ -130,6 +130,8 @@ Protocol:ssh
 User:git
 password:şifrem
 
+git remote remove origin
+
 sudo apt-get autoremove gnome-keyring
 
 mehmet@mehmet:/tmp$ git clone git@github.com:mehmetozkan/OpenStackApi.git
