@@ -1,0 +1,31 @@
+C:\Users\admi..>mongod --config D:\mongodb\mongo.config --install
+
+mongod.exe --dbpath "C:\Program Files\MongoDB\data"
+
+mongod.exe --install --config "C:\Program Files\MongoDB\conf\mongo.conf" --logpath "C:\Program Files\MongoDB\log\mongo.log"
+
+
+C:\Program Files\MongoDB
+						\conf
+						\data\db
+						\log
+
+
+# mongodb.conf
+
+# data lives here
+dbpath=C:\Program Files\MongoDB\data\db
+
+# where to log
+logpath=C:\Program Files\MongoDB\log\mongo.log
+logappend=true
+
+# only run on localhost for development
+bind_ip = 127.0.0.1                                                             
+
+port = 27017
+rest = true
+
+
+firewall Ekleme
+netsh.exe advfirewall firewall add rule name="MongoDB (port 27017)" dir=in action=allow protocol=TCP localport=27017
