@@ -148,3 +148,16 @@ vim /etc/hosts
 sudo vim /etc/hosts
 sudo /etc/init.d/network restart
 sudo /etc/init.d/networking restart
+
+mvn archetype:generate -DgroupId=com.mehmet -DartifactId=com.my.DataLayer -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.mehmet -DartifactId=com.my.Tms -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+mvn archetype:generate -DgroupId=com.mehmet -DartifactId=ErpmyWeb -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+/etc/init.d/tomcat8 restart
+sudo apt-get install mc
+
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java8-installer
+
+apt-get install cron
