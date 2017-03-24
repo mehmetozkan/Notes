@@ -1,0 +1,112 @@
+//db.Person.find({'gender':'FAMALE'})
+//db.Person.find({'gender':{$gt:50} })
+
+//db.Person.find({'email': /1@gmail.com/})
+
+/*db.Person.find({'gender':'FAMALE'}).forEach(function(person){
+  print(person.lastname);
+
+});*/
+/*
+	var olmayan = db.Person.find( {'gender':'FAMALE', "addresses":{$exists:false}} );
+  	
+  	while(olmayan.hasNext()) {
+  	var person = olmayan.next(); 
+  	 print(person.firstName);
+  	 
+  	}*/
+db.my_collection.aggregate([ 
+                     { $match: { my_field: 'my_value' } },
+                     { $out: 'my_new_collection' } 
+                      ])
+
+
+db.Person.aggregate([
+                     { $match: { "addresses":{$exists:true}} },
+                     { $group: { _id: "$gender", total: { $sum:1 } } },
+                     { $sort: { total: -1 } }
+                   ])
+                   
+/*db.getCollectionNames().forEach(function(collection) {
+  print(collection);
+});*/
+
+//----------select in komutu
+var list = db.collectionA.find({},{ "_id": 0, "field": 1 }).toArray();
+
+results = db.collectionB.find({ "newfield": { "$in": list } });
+//----------select in komutu end
+
+
+ db.Person.find( { firstName: { $in: [ 'name1', 'name2' ] } } )
+
+{ _id: 1, cust_id: "abc1", ord_date: ISODate("2012-11-02T17:04:11.102Z"), status: "A", amount: 50 }
+{ _id: 2, cust_id: "xyz1", ord_date: ISODate("2013-10-01T17:04:11.102Z"), status: "A", amount: 100 }
+{ _id: 3, cust_id: "xyz1", ord_date: ISODate("2013-10-12T17:04:11.102Z"), status: "D", amount: 25 }
+{ _id: 4, cust_id: "xyz1", ord_date: ISODate("2013-10-11T17:04:11.102Z"), status: "D", amount: 125 }
+{ _id: 5, cust_id: "abc1", ord_date: ISODate("2013-11-12T17:04:11.102Z"), status: "A", amount: 25 }
+
+db.orders.aggregate([
+                     { $match: { status: "A" } },
+                     { $group: { _id: "$cust_id", total: { $sum: "$amount" } } },
+                     { $sort: { total: -1 } }
+                   ])
+{ "_id" : "xyz1", "total" : 100 }
+{ "_id" : "abc1", "total" : 75 }
+db.orders.aggregate(
+                     [
+                       { $match: { status: "A" } },
+                       { $group: { _id: "$cust_id", total: { $sum: "$amount" } } },
+                       { $sort: { total: -1 } }
+                     ],
+                     {
+                       explain: true
+                     }
+                   )
+
+db.users.insert( {
+    user_id: "abc123",
+    age: 55,
+    status: "A"
+ } )
+db.users.update(
+    { },
+    { $set: { join_date: new Date() } },
+    { multi: true  // multi demezsen ilk bulduğunu değiştirir.
+	}
+)
+db.users.update(
+    { },
+    { $unset: { join_date: "" } },   //tablodan o veriyi çıkartır.
+    { multi: true }
+)
+//--------------------multi aggregate
+db.zipcodes.aggregate( [
+   { $group:
+      {
+        _id: { state: "$state", city: "$city" },
+        pop: { $sum: "$pop" }
+      }
+   },
+   { $sort: { pop: 1 } },
+   { $group:
+      {
+        _id : "$_id.state",
+        biggestCity:  { $last: "$_id.city" },
+        biggestPop:   { $last: "$pop" },
+        smallestCity: { $first: "$_id.city" },
+        smallestPop:  { $first: "$pop" }
+      }
+   },
+
+  // the following $project is optional, and
+  // modifies the output format.
+
+  { $project:
+    { _id: 0,
+      state: "$_id",
+      biggestCity:  { name: "$biggestCity",  pop: "$biggestPop" },
+      smallestCity: { name: "$smallestCity", pop: "$smallestPop" }
+    }
+  }
+] )
