@@ -1,2 +1,4 @@
+JBOSS_HOME=C:\work\wildfly-9.0.2.Final
+
 jboss wildfly add system server
 C:\work\wildfly-8.2.1.Final\bin\service>service install
