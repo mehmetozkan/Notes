@@ -29,3 +29,6 @@ rest = true
 
 firewall Ekleme
 netsh.exe advfirewall firewall add rule name="MongoDB (port 27017)" dir=in action=allow protocol=TCP localport=27017
+
+
+"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --config "C:\Program Files\MongoDB\conf\mongo.conf" --logpath "C:\Program Files\MongoDB\log\mongo.log" --service
