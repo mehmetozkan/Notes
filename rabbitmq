@@ -1,0 +1,42 @@
+windows 
+execute otp_win64_19.3.exe
+execute rabbitmq-server-3.6.9.exe
+
+C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.9\sbin> rabbitmq-plugins enable rabbitmq_management  [Enter]
+
+ubuntu
+sudo apt-get update
+sudo apt-get upgrade
+
+wget http://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
+sudo apt-key add erlang_solutions.asc
+sudo apt-get update
+sudo apt-get install erlang
+sudo apt-get install erlang-nox
+
+echo "deb http://www.rabbitmq.com/debian/ testing main" >> /etc/apt/sources.list
+
+wget https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+sudo apt-key add rabbitmq-signing-key-public.asc
+
+sudo apt-get update
+sudo apt-get install rabbitmq-server
+
+# To automatic enable boot service:
+systemctl enable rabbitmq-server
+ 
+# To start the service:
+systemctl start rabbitmq-server
+ 
+# To stop the service:
+systemctl stop rabbitmq-server
+ 
+# To restart the service:
+systemctl restart rabbitmq-server
+ 
+# To check the status:
+systemctl status rabbitmq-server
+
+sudo rabbitmq-plugins enable rabbitmq_management
+
+http://[your-server]:15672/
