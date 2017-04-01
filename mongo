@@ -34,3 +34,7 @@ netsh.exe advfirewall firewall add rule name="MongoDB (port 27017)" dir=in actio
 
 
 "C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --config "C:\Program Files\MongoDB\conf\mongo.conf" --logpath "C:\Program Files\MongoDB\log\mongo.log" --service
+
+mongo --port 27017 -u "myTester" -p "xyz123" --authenticationDatabase "test"
+
+mongo --host localhost --port 27017 -u tugberk -p 12345678 --authenticationDatabase admin
