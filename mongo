@@ -26,6 +26,8 @@ bind_ip = 127.0.0.1
 port = 27017
 rest = true
 
+auth = true
+
 
 firewall Ekleme
 netsh.exe advfirewall firewall add rule name="MongoDB (port 27017)" dir=in action=allow protocol=TCP localport=27017
