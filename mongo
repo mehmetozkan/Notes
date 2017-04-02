@@ -31,10 +31,27 @@ auth = true
 
 firewall Ekleme
 netsh.exe advfirewall firewall add rule name="MongoDB (port 27017)" dir=in action=allow protocol=TCP localport=27017
-
-
-"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --config "C:\Program Files\MongoDB\conf\mongo.conf" --logpath "C:\Program Files\MongoDB\log\mongo.log" --service
-
+ 
 mongo --port 27017 -u "myTester" -p "xyz123" --authenticationDatabase "test"
 
 mongo --host localhost --port 27017 -u tugberk -p 12345678 --authenticationDatabase admin
+
+replication set
+mongod -port 27001 -dbpath /var/mongodb/rep1 -replSet replicationName
+mongod -port 27002 -dbpath /var/mongodb/rep2 -replSet replicationName
+mongod -port 27003 -dbpath /var/mongodb/rep3 -replSet replicationName
+
+replicationConfig=
+{_id:"replication",members:[{_id:1,host:"localhost:27001"},{_id:2,host:"localhost:27002"},{_id:3,host:"localhost:27003"}] }
+rs.initiate(replicationConfig)
+rs.status()
+
+mongodb://localhost:27001,localhost:27002,localhost:27003/DBNAME?replicaSet=replicationName
+
+or
+mongod --port 27017 --dbpath "/db/data" --replSet rs0
+Yeni bir Replica set başlatmak için –> rs.initiate()
+Replica Set yapılandırmasını görmek için –> rs.conf()
+Replica Set durumunu görmek için –> rs.status()
+Replica Set’ e üye node ekleme –> rs.add(HOST_NAME:PORT)
+rs.add("mongod1.net:27017")
