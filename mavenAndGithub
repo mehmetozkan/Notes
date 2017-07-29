@@ -161,3 +161,13 @@ $ sudo apt-get update
 $ sudo apt-get install oracle-java8-installer
 
 apt-get install cron
+
+create maven web project config
+1 create maven project
+2 src/
+   create test
+   main
+       crate java
+3 add describe Servlet Types
+4 maven org.apache.maven.plugins
+5 setting org.eclipse.wst.common.project.facet.core.xml jst.web version and java version
