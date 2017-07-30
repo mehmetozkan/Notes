@@ -171,3 +171,6 @@ create maven web project config
 3 add describe Servlet Types
 4 maven org.apache.maven.plugins
 5 setting org.eclipse.wst.common.project.facet.core.xml jst.web version and java version
+
+
+\myproject> mvn eclipse:eclipse proje içinde yapınca gerekli jarları ekliyor
