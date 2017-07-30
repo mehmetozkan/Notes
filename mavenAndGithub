@@ -174,3 +174,11 @@ create maven web project config
 
 
 \myproject> mvn eclipse:eclipse proje içinde yapınca gerekli jarları ekliyor
+
+
+<dependency>
+	<groupId>com.oracle</groupId>
+	<artifactId>ojdbc6</artifactId>
+	<version>11.2.0.3</version>
+</dependency>
+mvn install:install-file -Dfile=C:\ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar
