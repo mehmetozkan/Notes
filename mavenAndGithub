@@ -189,5 +189,6 @@ http://slackspace.de/articles/create-deployment-profiles-with-maven/
 mvn package -P oracle_test_weblogic
 mvn clean compile package -Denvironment=prod
 mvn clean compile package -Denvironment=prod help:active-profiles
+mvn install -Denvironment.type=development
 <profile><id>oracle_test_weblogic</id><properties><!-- jdbc driver dependency --></properties></profile>
 <profile><id>oracle_prod</id><properties><!-- jdbc driver dependency --></properties></profile>
