@@ -1,3 +1,7 @@
 <context:component-scan base-package="com.howtodoinjava.demo.service" />
 <context:component-scan base-package="com.howtodoinjava.demo.dao" />
 <context:component-scan base-package="com.howtodoinjava.demo.controller" />
+
+<context:property-placeholder location="classpath*:database.properties,classpath*:hibernate.properties,classpath*:executionprofiles.properties" />
+    
+<bean class=”org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor”/>
