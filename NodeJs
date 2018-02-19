@@ -3,3 +3,13 @@ net start service_name
 sc delete "service_name"
 
 nssm.exe install nginx 
+
+
+npm install -g qckwinsvc
+qckwinsvc
+prompt: Service name: Hello
+prompt: Service description: Greets the world
+prompt: Node script path: C:\my\folder\hello.js
+prompt: Should the service get started immediately? (y/n): y
+Service installed.
+Service started.
