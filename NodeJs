@@ -1,0 +1,5 @@
+nssm.exe install service_name C:\Program Files\nodejs\node.exe C:\nodejs\server.js
+net start service_name
+sc delete "service_name"
+
+nssm.exe install nginx 
