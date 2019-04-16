@@ -38,3 +38,10 @@ var options : string[] = Object.keys(ReportTypesEnum);
         for (const k of Object.keys(options)) {
             console.log(options[k]);
         }
+
+ // var options : string[] = Object.keys(ReportTypesEnum);
+
+        /* for (const k of Object.keys(ReportTypesEnum)) {
+             console.log(k +" "+ReportTypesEnum[k]);
+         }*/
+
