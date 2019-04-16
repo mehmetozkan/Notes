@@ -1,0 +1,36 @@
+export enum ReportTypesEnum {
+    CSV = "CSV 1",
+    JSON = "JSON 1",
+    XML = "XML 1"
+}
+
+const keys1 = Object.keys(ReportTypesEnum).filter((type) => isNaN(<any>type) && type !== 'CSV');
+
+
+ 
+ Object.keys(ReportTypesEnum).forEach(function(key) {
+  var val = ReportTypesEnum[key];
+  console.log(key + " "+ val);   
+});
+
+
+    var x = getEnumValue("CSV");
+    console.log(x);
+
+
+
+
+
+export function getEnumValue(value: string):string | undefined{
+var str=undefined;
+ Object.keys(ReportTypesEnum).forEach(function(key) {
+  var val = ReportTypesEnum[key];
+   if (key == value) str= val; 
+  //console.log(key + " "+ val);   
+}); 
+ return str; 
+}
+
+
+   str= (key == value)?ReportTypesEnum[key]:undefined;
+  
