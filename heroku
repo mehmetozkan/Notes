@@ -1,0 +1,6 @@
+https://signup.heroku.com/ 
+heroku login
+heroku --version
+heroku autocomplete
+ibackend>heroku git:clone -a ibackend
+heroku auth:token
