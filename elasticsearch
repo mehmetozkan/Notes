@@ -1,0 +1,14 @@
+https://www.elastic.co/downloads/past-releases
+http://localhost:9200/
+Elasticsearch engine download 5.x or 6.x ( I will explain the steps how to download)
+
+> service.bat
+Usage: service.bat install|remove|start|stop|manager [SERVICE_ID]
+
+> service install
+Installing service      :  'elasticsearch-service-x64'
+Using JAVA_HOME (64-bit):  c:jvmjdk1.7
+The service 'elasticsearch-service-x64' has been installed.
+
+> service start
+The service 'elasticsearch-service-x64' has been started
