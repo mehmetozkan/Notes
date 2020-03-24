@@ -1,10 +1,7 @@
 docker search kafka
 docker ps -a
 docker run -d --name zookeeper --publish 2181:2181 jplock/zookeeper:latest
-
-
-
-
+docker run --name kafka -d -p "9092:9092" -e KAFKA_ADVERTISED_HOST_NAME=192.168.99.100 --link zookeeper:zookeeper ches/kafka
 
 
 for manuel
