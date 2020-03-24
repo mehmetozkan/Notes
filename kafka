@@ -3,6 +3,9 @@ docker ps -a
 docker run -d --name zookeeper --publish 2181:2181 jplock/zookeeper:latest
 docker run --name kafka -d -p "9092:9092" -e KAFKA_ADVERTISED_HOST_NAME=192.168.99.100 --link zookeeper:zookeeper ches/kafka
 
+docker run -d -p 9000:9000 -v <persistent-db-and-logs-dir>:/data hwestphal/kafka-web-console
+docker run -d -p 9090:9090 --name kafka-web-console leafknode/kafka-web-console
+After few seconds, open http://<host>:9000/ to see the starting page.
 
 for manuel
 http://zookeeper.apache.org/releases.html#download
