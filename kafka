@@ -1,0 +1,49 @@
+docker search kafka
+docker ps -a
+docker run -d --name zookeeper --publish 2181:2181 jplock/zookeeper:latest
+
+
+
+
+
+
+for manuel
+http://zookeeper.apache.org/releases.html#download
+https://kafka.apache.org/downloads
+
+Environment variable
+ZOOKEEPER_HOME ==> D:\zookeeper
+KAFKA_HOME ==> D:\kafka
+
+Path 
+%ZOOKEEPER_HOME%\bin
+%KAFKA_HOME%\bin\Windows
+
+Kafka logları için home dizin altında logs isminde bir klasör oluşturunuz. 
+conf içindeki server.properties dosyasını açarak içinde şu değişikliği yapınız:  
+“log.dirs=/tmp/kafka-logs” yerine “log.dirs=D:\\kafka\\logs”
+Varsayılan ayar olarak Apache Kafka port 9092 ve Apache Zookeeper port 2181 kullanır.
+
+Kafka Topic Oluşturma
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic deneme
+
+Kafka Topic Listeleme
+kafka-topics.bat --list --zookeeper localhost:2181
+
+Kafka Topic Silme
+server.properties içinde en son satıra
+## Costum settings
+delete.topic.enable=true
+ekleyin ve daha sonra aşağıdaki komut ile topic silme işini yapabilirsiniz.
+kafka-topics.bat --zookeeper localhost:2181 --delete --topic deneme
+
+Konsol ile Kafka’ya Mesaj Göndermek
+kafka-console-producer.bat --broker-list localhost:9092 --topic deneme
+>merhaba kafka
+>deneme
+
+Konsol ile Kafka’dan Mesaj Okumak
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic deneme --from-beginning
+
+Csv dosyasını Kafka’ya nasıl yazarız?
+kafka-console-producer.bat --broker-list localhost:9092 --topic deneme <  Advertising.csv
