@@ -7,6 +7,8 @@ docker search postgresql
 docker search postgis
 docker search rabbitmq
 
+docker run -d -p 80:80 nginx
+
 docker search redis
 docker search redis --filter=stars=3 --no-trunc
 
