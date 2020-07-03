@@ -1,0 +1,4 @@
+nohup node http_server.js > output.log & 
+tail -f output.log
+
+$ nohup ./script.sh & tail -f nohup.out
