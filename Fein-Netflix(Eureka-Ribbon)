@@ -1,0 +1,98 @@
+server:
+  port: 8081
+
+spring:
+ application:
+    name: stock-service
+	
+ @Configuration
+@EnableFeignClients(basePackages = "com.vodafone.triplea.stockservice.client.feign")
+public class FeignConfiguration {
+    @Bean
+    public feign.Logger.Level feignLoggingLevel() {
+        return feign.Logger.Level.BASIC;
+    }
+}
+----------------------------
+spring:
+  application:
+    name: sales-service
+	
+@Configuration
+@EnableFeignClients(basePackages = "com.vodafone.triplea.salesservice.client")
+public class FeignConfig {
+
+    @Bean
+    public feign.Logger.Level feignLoggingLevel() {
+        return feign.Logger.Level.BASIC;
+    }
+}
+
+----------------------------
+@EnableEurekaServer
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+</dependency>
+
+spring:
+  application:
+    name: eureka
+server:
+  port: 8761
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+
+--------------------------------------------------------------------------
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 60000
+        read-timeout: 10000
+		
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+	  
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>	  
+-------------------------------------------------------------------------
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-openfeign</artifactId>
+ </dependency>
+ 
+ @FeignClient(name = "stock-service")
+ public interface StockServiceClient extends StockFeignClient  }
+
+    @GetMapping("/api/sales-person/store/{storeCode}")
+    ResponseEntity<List<SalesPersonDto>> getStoreSalesPersonList(@PathVariable String storeCode);
+
+    @GetMapping("/api/stock-card/barcodeOrImei/{text}/{storeCode}")
+}
+------------------------------------------------------------------------
+stock-service:
+  ribbon:
+    listOfServers: http://localhost:8081
+
+sales-service:
+    ribbon:
+      listOfServers: http://localhost:8086
+	  
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+ </dependency>
+ -----------------------------------------------------------------------
+ Feign arkasında Ribbon hep var. 
+ istersek Localde çalışırken servis adreslerini bulmak için Eureka çalıştırmaya gerek kalmadan
+ Ribbon'a servis adreslerini doğrudan verebiliyoruz
