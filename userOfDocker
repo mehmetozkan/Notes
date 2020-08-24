@@ -1,3 +1,6 @@
+docker push 000.00.00.000:4411/stock/trans-service
+docker build -t 000.00.000.00:4411/stock/trans-service
+
 docker ps
 docker search kafka
 docker search keycloak
